@@ -1,6 +1,7 @@
 package co.com.rective;
 
 import co.com.rective.creation.Creation;
+import co.com.rective.transformation.Transformation;
 import io.reactivex.Observable;
 import java.util.ArrayList;
 import java.util.List;
@@ -68,5 +69,10 @@ public class ReactorApplication implements CommandLineRunner {
     Creation creation = new Creation();
     creation.range();
     creation.repeat();
+
+    Transformation transformation = new Transformation();
+    transformation.map();
+    transformation.flatMap();
+    transformation.groupBy();
   }
 }
