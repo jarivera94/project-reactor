@@ -1,10 +1,13 @@
 package co.com.rective;
 
 import io.reactivex.Observable;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Slf4j
@@ -27,9 +30,38 @@ public class ReactorApplication implements CommandLineRunner {
         .subscribe(person -> log.info("ReactorApplication::rxJava {}", person.toString()));
   }
 
+  public void mono() {
+    Mono.just(new Person(1, "reactor", "mono"))
+        .subscribe(person -> log.info("ReactorApplication::mono {}", person.toString()));
+  }
+
+  public void flux() {
+    List<Person> listPerson = new ArrayList<>();
+    listPerson.add(new Person(1, "project1", "reactor1"));
+    listPerson.add(new Person(2, "project2", "reactor2"));
+    listPerson.add(new Person(3, "project3", "reactor3"));
+
+    Flux.fromIterable(listPerson)
+        .subscribe(person -> log.info("ReactorApplication::flux {}", person.toString()));
+  }
+
+  public void fluxToMono() {
+    List<Person> listPerson = new ArrayList<>();
+    listPerson.add(new Person(1, "project1", "reactor1"));
+    listPerson.add(new Person(2, "project2", "reactor2"));
+    listPerson.add(new Person(3, "project3", "reactor3"));
+
+    Flux<Person> flux = Flux.fromIterable(listPerson);
+    flux.collectList()
+        .subscribe(people -> log.info("ReactorApplication::fluxToMono list {}", people.toString()));
+  }
+
   @Override
   public void run(String... args) {
-    reactor();
-    rxJava();
+    //reactor();
+    //rxJava();
+    mono();
+    flux();
+    fluxToMono();
   }
 }
