@@ -1,16 +1,25 @@
 plugins {
+    id 'org.springframework.boot' version '2.4.1'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
     id 'java'
 }
-
-group 'org.example'
-version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
-
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
 repositories {
     mavenCentral()
+    mavenLocal()
+    maven { url "https://plugins.gradle.org/m2/" }
 }
-
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    annotationProcessor "org.projectlombok:lombok:1.18.10"
+    implementation "org.projectlombok:lombok:1.18.10"
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'io.projectreactor:reactor-core'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.20'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'io.projectreactor:reactor-test'
+}
+test {
+    useJUnitPlatform()
 }
