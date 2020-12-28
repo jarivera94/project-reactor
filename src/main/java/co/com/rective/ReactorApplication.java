@@ -1,6 +1,7 @@
 package co.com.rective;
 
 import co.com.rective.creation.Creation;
+import co.com.rective.filter.FilterApp;
 import co.com.rective.transformation.Transformation;
 import io.reactivex.Observable;
 import java.util.ArrayList;
@@ -74,5 +75,11 @@ public class ReactorApplication implements CommandLineRunner {
     transformation.map();
     transformation.flatMap();
     transformation.groupBy();
+    FilterApp filterApp = new FilterApp();
+    filterApp.filter();
+    filterApp.take();
+    filterApp.takeLast();
+    filterApp.skip();
+    filterApp.skipLast();
   }
 }
