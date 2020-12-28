@@ -1,5 +1,6 @@
 package co.com.rective;
 
+import co.com.rective.creation.Creation;
 import io.reactivex.Observable;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,8 +61,12 @@ public class ReactorApplication implements CommandLineRunner {
   public void run(String... args) {
     //reactor();
     //rxJava();
-    mono();
-    flux();
-    fluxToMono();
+    //mono();
+    //flux();
+    //fluxToMono();
+
+    Creation creation = new Creation();
+    creation.range();
+    creation.repeat();
   }
 }
