@@ -1,5 +1,6 @@
 package co.com.rective;
 
+import co.com.rective.combine.Combination;
 import co.com.rective.creation.Creation;
 import co.com.rective.filter.FilterApp;
 import co.com.rective.transformation.Transformation;
@@ -81,5 +82,10 @@ public class ReactorApplication implements CommandLineRunner {
     filterApp.takeLast();
     filterApp.skip();
     filterApp.skipLast();
+
+    Combination combination = new Combination();
+    combination.merge();
+    combination.zip();
+    combination.zipWith();
   }
 }
