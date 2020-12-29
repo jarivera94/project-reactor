@@ -1,6 +1,7 @@
 package co.com.rective;
 
 import co.com.rective.combine.Combination;
+import co.com.rective.conditional.Conditional;
 import co.com.rective.creation.Creation;
 import co.com.rective.error.OperatorError;
 import co.com.rective.filter.FilterApp;
@@ -94,5 +95,9 @@ public class ReactorApplication implements CommandLineRunner {
     operatorError.onErrorResume();
 
     operatorError.onErrorResumeMap();
+
+    Conditional conditional = new Conditional();
+    conditional.defaultEmpty();
+    conditional.takeUntil();
   }
 }
