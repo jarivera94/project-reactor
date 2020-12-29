@@ -2,6 +2,7 @@ package co.com.rective;
 
 import co.com.rective.combine.Combination;
 import co.com.rective.creation.Creation;
+import co.com.rective.error.OperatorError;
 import co.com.rective.filter.FilterApp;
 import co.com.rective.transformation.Transformation;
 import io.reactivex.Observable;
@@ -87,5 +88,11 @@ public class ReactorApplication implements CommandLineRunner {
     combination.merge();
     combination.zip();
     combination.zipWith();
+
+    OperatorError operatorError = new OperatorError();
+    operatorError.onErrorReturn();
+    operatorError.onErrorResume();
+
+    operatorError.onErrorResumeMap();
   }
 }
